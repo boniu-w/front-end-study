@@ -46,3 +46,6 @@ obj.hasOwnProperty("id");  // obj 是否有这个 id 属性
 
 
 
+#### 4. this.$emit('ok')
+
+子组件 向父组件 传值
