@@ -32,11 +32,21 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 #### 2. vue computed
 
+#### 3. this.$emit('ok')
+
+子组件 向父组件 传值
 
 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### 3. js   hasOwnProperty()
+
+
+# 								js 部分
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#### 1. JavaScript  hasOwnProperty()  : obj 的方法
 
 Object的`hasOwnProperty()`方法返回一个布尔值，判断对象是否包含特定的自身（非继承）属性
 
@@ -46,6 +56,79 @@ obj.hasOwnProperty("id");  // obj 是否有这个 id 属性
 
 
 
-#### 4. this.$emit('ok')
+#### 2. JavaScript  .join()  : 数组的方法
 
-子组件 向父组件 传值
+join() 用于把数组中的所有元素放到一个字符串中
+
+arrayobject.join(separator);
+
+
+
+separator : 可选,指定使用的分隔符,如果省略,则使用逗号作为分隔符;
+
+
+
+返回的是个 字符串
+
+
+
+#### 3. push() :  数组的方法
+
+push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+
+
+
+```js
+arrayObject.push(newelement1,newelement2,....,newelementX)
+```
+
+
+
+| 参数        | 描述                             |
+| :---------- | :------------------------------- |
+| newelement1 | 必需。要添加到数组的第一个元素。 |
+| newelement2 | 可选。要添加到数组的第二个元素。 |
+| newelementX | 可选。可添加多个元素。           |
+
+
+
+返回的是个长度
+
+
+
+例:
+
+```js
+<script type="text/javascript">
+
+var arr = new Array(3)
+arr[0] = "George"
+arr[1] = "John"
+arr[2] = "Thomas"
+
+document.write(arr + "<br />")
+document.write(arr.push("James") + "<br />")
+document.write(arr)
+
+</script>
+```
+
+
+
+输出: 
+
+```js
+George,John,Thomas
+4
+George,John,Thomas,James
+```
+
+
+
+
+
+#### 4. sessionStorage.setItem
+
+使用 sessionStorage 创建一个本地存储的 key/value 对
+
+sessionStorage.getItem(key);
