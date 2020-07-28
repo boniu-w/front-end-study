@@ -1,5 +1,7 @@
+# vue 部分
 
-# 创建一个基于 webpack 模板的新项目
+#### 1. 创建一个基于 webpack 模板的新项目
+
  vue init webpack my-project
 
  cd my-project
@@ -18,7 +20,7 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
  返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。
  请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。
 
-#### 1. vue中的单选框
+#### 2. vue中的单选框
 
 ```js
 	<a-checkbox-group v-decorator="['personTypeId', {}]">
@@ -30,9 +32,9 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 
 
-#### 2. vue computed
+#### 3. vue computed
 
-#### 3. this.$emit('ok')
+#### 4. this.$emit('ok')
 
 子组件 向父组件 传值
 
@@ -132,3 +134,17 @@ George,John,Thomas,James
 使用 sessionStorage 创建一个本地存储的 key/value 对
 
 sessionStorage.getItem(key);
+
+
+
+`sessionStorage` 属性允许你访问一个，对应当前源的 session [`Storage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage) 对象。它与 [`localStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage) 相似，不同之处在于 `localStorage` 里面存储的数据没有过期时间设置，而存储在 `sessionStorage` 里面的数据在页面会话结束时会被清除。
+
+
+
+# npm 部分
+
+#### 1. 安装 依赖
+
+```
+cnpm install echarts --save
+```
