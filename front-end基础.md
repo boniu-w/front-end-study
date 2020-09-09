@@ -158,3 +158,71 @@ sessionStorage.getItem(key);
 ```
 cnpm install echarts --save
 ```
+
+
+
+
+
+# html
+
+#### 1. meta
+
+<meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
+
+- http-equiv 属性
+
+http-equiv 属性为名称/值对提供了名称。并指示服务器在发送实际的文档之前先在要传送给浏览器的 MIME 文档头部包含名称/值对。
+
+当服务器向浏览器发送文档时，会先发送许多名称/值对。虽然有些服务器会发送许多这种名称/值对，但是所有服务器都至少要发送一个：content-type:text/html。这将告诉浏览器准备接受一个 HTML 文档。
+
+使用带有 http-equiv 属性的 <meta> 标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。例如，添加：
+
+```
+<meta http-equiv="charset" content="iso-8859-1">
+<meta http-equiv="expires" content="31 Dec 2008">
+```
+
+这样发送到浏览器的头部就应该包含：
+
+```
+content-type: text/html
+charset:iso-8859-1
+expires:31 Dec 2008
+```
+
+当然，只有浏览器可以接受这些附加的头部字段，并能以适当的方式使用它们时，这些字段才有意义。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
