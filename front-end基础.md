@@ -194,6 +194,203 @@ expires:31 Dec 2008
 
 
 
+#### 2. document.domain
+
+跨域访问的
+
+默认情况下，document.domain存放的是载入文档的服务器的主机名，可以手动设置这个属性，不过是有限制的，只能设置成当前域名或者上级的域名，并且必须要包含一个.号，也就是说不能直接设置成顶级域名。例如：id.qq.com，可以设置成qq.com，但是不能设置成com。
+
+具有相同document.domain的页面，就相当于是处在同域名的服务器上，如果协议和端口号也是一致，那它们之间就可以跨域访问数据。
+
+
+
+
+
+#### 3. function,attribute
+
+
+
+| document                               | description                                                  | example                                       |
+| -------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| window.open(URL,name,features,replace) |                                                              | window.open("http://www.w3school.com.cn")     |
+| window.domain                          | 跨域 属性可以解决因同源安全策略带来的不同文档的属性共享问题  |                                               |
+| window.onload=function(){}             | 用于在网页加载完毕后立刻执行的操作，即当 HTML 文档加载完毕后，立刻执行某个方法, 因为 JavaScript 中的函数方法需要在 HTML 文档渲染完成后才可以使用，如果没有渲染完成，此时的 DOM 树是不完整的，这样在调用一些 JavaScript 代码时就可能报出"undefined"错误。 |                                               |
+| document.write()                       | 在文档已加载后使用它（比如在函数中），会覆盖整个文档。       | document.write("<h1>This is a heading</h1>"); |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+|                                        |                                                              |                                               |
+
+
+
+
+
+- window.onload 与 document.ready
+
+  1. document.ready：document.ready可以写多个.ready，可以执行多次，第N次都不会被上一次覆盖。
+
+  2. onload：onload只能执行一次，如果有多个，那么第一次的执行会被覆盖
+
+  3. 执行速度不同 
+
+     1. document.ready：onload除了要等待DOM被创建还要等到包括大型图片、音频、视频在内的所有外部资源都完全加载。如果加载图片和媒体内容花费了大量时间，用户就会感受到定义在onload事件上的代码在执行时有明显的延迟。
+     2. onload：document.ready函数只需对 DOM 树的等待，而无需对图像或外部资源加载的等待，从而执行起来更快。
+
+  4. 加载程度不同
+
+     1. document.ready：在DOM加载完成后bai就可以可以对DOM进行操作。一du般情况一个页面响应加载的顺序是，域名解析-加载html-加载js和css-加载图片等其他信息。那么Dom Ready应该在“加载js和css”和“加载图片等其他信息”之间，就可以操作Dom了。
+
+     2. onload：在document文档加载完成后就可以可以对DOM进行操作，document文档包括了加载图片等其他信息。那么Dom Load就是在页面响应加载的顺序中的“加载图片等其他信息”之后，就可以操作Dom了。
+
+
+
+
+
+#### 4. 知识点
+
+- 浏览器的标签页显示 文字 和 图标
+
+  ```html
+  <title>天津公安经侦综合信息网</title>
+  <link rel="icon" sizes="any" href="/ms-mcms/templets/1/company1804/images/JingHui.png">
+  ```
+
+
+#### 5. 引入公共部分
+
+- 引入公共js  common.js
+
+  ```html
+  document.write('<!-----------  公共js和css start----------->');
+  document.write('' +
+      '<link rel="stylesheet" href="http://localhost:33333/css/bootstrap.min.css">' +
+      '<link rel="stylesheet" href="http://localhost:33333/css/bootstrap-theme.css">' +
+      '<script src="http://localhost:33333/js/jquery-3.3.1.min.js"></script>' +
+      '<script src="http://localhost:33333/js/bootstrap.min.js"></script>' +
+      '');
+  document.write('<!-----------  公共js和css end----------->');
+  ```
+
+  ```html
+  <script src="http://localhost:33333/js/common.js"></script>
+  ```
+
+  
+
+- 引入公共页面 header.html
+
+  ```html
+  
+  <div class="container" style="background: #a6e1ec; ">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="row">
+                  <div class="col-md-4">
+                      <span class="riqi">2020年7月30日</span>
+                  </div>
+                  <div class="col-md-4">
+                      <span class="xianxing">今日限行 0 5</span>
+                  </div>
+                  <div class="col-md-4">
+                      <span class="kuaisubobao"> 快速播报</span>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="col-md-5">
+  
+              <marquee>文本从左向右滚动</marquee>
+  
+          </div>
+          <div class="col-md-3" style="margin-top: 2px;margin-bottom: 4px; height: 80%">
+              <div class="row">
+                  <div class="col-md-12 input-group input-mini">
+                      <input type="text" class="form-control" placeholder="Recipient's username"
+                             aria-describedby="basic-addon2">
+                      <span class="input-group-addon" id="basic-addon2">@example.com</span>
+                  </div>
+              </div>
+          </div>
+  
+      </div>
+  
+  
+  </div>
+  
+  ```
+
+- body.html
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>test body include header.html</title>
+      <script src="http://localhost:33333/js/common.js"></script>
+  </head>
+  <body>
+  
+  <div id="yy"></div>
+  <script>
+      $().ready(function () {
+          $("#yy").load("http://localhost:33333/page/templet/header.html");
+      })
+  
+  </script>
+  </body>
+  </html>
+  ```
+
+  
+
+# jquery
+
+
+
+| function     | description                                                  | example                                                      |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| mouseenter() | 当鼠标指针穿过元素时，会发生 mouseenter 事件                 | $("p").mouseenter(function(){   $("p").css("background-color","yellow"); }); |
+| mouseleave() | 鼠标离开                                                     |                                                              |
+| find()       | 获得当前元素集合中每个元素的后代，通过选择器、jQuery 对象或元素来筛选。 | $("p").find("span").css('color','red');                      |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
+|              |                                                              |                                                              |
 
 
 
@@ -201,20 +398,17 @@ expires:31 Dec 2008
 
 
 
+# bootstrap
 
+#### 1. 栅格
 
+col-xs-* 超小屏幕 手机 (<768px)
 
+.col-sm-* 小屏幕 平板 (≥768px)
 
+.col-md-* 中等屏幕 桌面显示器 (≥992px)
 
-
-
-
-
-
-
-
-
-
+.col-lg-* 大屏幕 大桌面显示器 (≥1200px)
 
 
 
