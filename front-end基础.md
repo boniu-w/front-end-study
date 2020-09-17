@@ -234,27 +234,27 @@ expires:31 Dec 2008
 
 
 
-| document                               | description                                                  | example                                       |
-| -------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
-| window.open(URL,name,features,replace) |                                                              | window.open("http://www.w3school.com.cn")     |
-| window.domain                          | 跨域 属性可以解决因同源安全策略带来的不同文档的属性共享问题  |                                               |
-| window.onload=function(){}             | 用于在网页加载完毕后立刻执行的操作，即当 HTML 文档加载完毕后，立刻执行某个方法, 因为 JavaScript 中的函数方法需要在 HTML 文档渲染完成后才可以使用，如果没有渲染完成，此时的 DOM 树是不完整的，这样在调用一些 JavaScript 代码时就可能报出"undefined"错误。 |                                               |
-| document.write()                       | 在文档已加载后使用它（比如在函数中），会覆盖整个文档。       | document.write("<h1>This is a heading</h1>"); |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
+| document                                                     | description                                                  | example                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
+| window.open(URL,name,features,replace)                       |                                                              | window.open("http://www.w3school.com.cn")     |
+| window.domain                                                | 跨域 属性可以解决因同源安全策略带来的不同文档的属性共享问题  |                                               |
+| window.onload=function(){}                                   | 用于在网页加载完毕后立刻执行的操作，即当 HTML 文档加载完毕后，立刻执行某个方法, 因为 JavaScript 中的函数方法需要在 HTML 文档渲染完成后才可以使用，如果没有渲染完成，此时的 DOM 树是不完整的，这样在调用一些 JavaScript 代码时就可能报出"undefined"错误。 |                                               |
+| document.write()                                             | 在文档已加载后使用它（比如在函数中），会覆盖整个文档。       | document.write("<h1>This is a heading</h1>"); |
+| window.location.hash                                         | 改变#不触发网页重载,单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页<br>这个属性可读可写。读取时，可以用来判断网页状态是否改变；写入时，则会在不重载网页的前提下，创造一条访问历史记录<br>见下面详述; | location.hash="admin"                         |
+| location.replace(url: string)<br>window.location.href="http://www.baidu.com"; | 重定向                                                       | location.replace("http://www.baidu.com")      |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
+|                                                              |                                                              |                                               |
 
 
 
@@ -279,9 +279,19 @@ expires:31 Dec 2008
 
 
 
+location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如http://www.test.com/#/something，其中http://www.test.com为真实的路径，而#/something则为网页中的位置，称之为**锚点**, 在访问锚点时会自动跳到锚点所在的网页位置，
 
+在对hash写时有个需要注意的地方，如下所示
 
-#### 4. 知识点
+```javascript
+//当前URL为http://www.test.com/location.hash = "#/test"	//http://www.test.com/#/testlocationl.hash = "/#/test"	//http://www.test.com/#/#/test
+```
+
+当写入第一个字符不为为 "#" 时会自动生成一个 "#" 在字符串之前，再把字符串追加到生成的#后面
+
+这样会造成有两个#,此时location.hash输出 "#/#/test"
+
+#### 4. 标签页显示 文字 和 图标
 
 - 浏览器的标签页显示 文字 和 图标
 
