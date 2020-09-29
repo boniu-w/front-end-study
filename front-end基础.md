@@ -234,7 +234,7 @@ expires:31 Dec 2008
 
 
 
-| document                                                     | description                                                  | example                                       |
+| <span style="white-space: nowrap;">document &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>                                                     | <span style="white-space: nowrap;">description &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>                                                  | <span style="white-space: nowrap;">example &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | window.open(URL,name,features,replace)                       |                                                              | window.open("http://www.w3school.com.cn")     |
 | window.domain                                                | 跨域 属性可以解决因同源安全策略带来的不同文档的属性共享问题  |                                               |
@@ -416,33 +416,37 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
 
 
 
-| attribute | description                                                |                                                              |
-| --------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| alt       | alt 属性是一个必需的属性，它规定在图像无法显示时的替代文本 | <img src="smiley-2.gif" alt="Smiley face" width="42" height="42"> |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
+| <span style="white-space: nowrap;">attribute &emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space: nowrap;">description &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space: nowrap;">example &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| alt                                                          | 图的一个属性, alt 属性是一个必需的属性，它规定在图像无法显示时的替代文本 | `<img src="smiley-2.gif" alt="Smiley face" width="42" height="42">` |
+| target                                                       | 如果在一个 <a> 标签内包含一个 target 属性，浏览器将会载入和显示用这个标签的 href 属性命名的、名称与这个目标吻合的框架或者窗口中的文档。如果这个指定名称或 id 的框架或者窗口不存在，浏览器将打开一个新的窗口，给这个窗口一个指定的标记，然后将新的文档载入那个窗口。从此以后，超链接文档就可以指向这个新的窗口 | <ul><br/>  `<li><a href="pref.html" target="view_window">Preface</a></li>`  `<li><a href="chap1.html" target="view_window">Chapter 1</a></li><li><a href="chap2.html" target="view_window">Chapter 2</a></li><li><a href="chap3.html" target="view_window">Chapter 3</a></li>`</ul> |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
 
 
 
 
 
 # jquery
+
+
+
+#### 1. 函数
 
 
 
