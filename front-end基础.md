@@ -171,7 +171,42 @@ String
 
 
 
+#### 7. 立即执行函数
 
+(function(arg){})(arg)
+
+前半部分: (function(arg){}) 匿名函数
+
+后半部分: (arg)传入参数 并立即执行
+
+#### 8. 新窗口打开 , 当前页面打开
+
+```js
+onclick="window.open('https://www.baidu.com')" // 新窗口打开
+window.location.href='https://www.baidu.com'  // 当前页面打开
+```
+
+
+
+#### 9. 将两个字符串数组 合并为一个 对象
+
+```js
+						var values = new Array();
+                        $("#mail-content input").each(function () {
+                            values.push($(this).val())
+                        })
+
+                        console.log(values, typeof values);
+
+                        var str = ["name", "company", "phone", "content"];
+
+                        var obj= values.reduce(function (result, value, index) {
+                            result[str[index]] = value;
+                            return result;
+                        },{})
+
+                        console.log("*****  ",obj)
+```
 
 
 
@@ -240,11 +275,10 @@ expires:31 Dec 2008
 | window.domain                          | 跨域 属性可以解决因同源安全策略带来的不同文档的属性共享问题  |                                               |
 | window.onload=function(){}             | 用于在网页加载完毕后立刻执行的操作，即当 HTML 文档加载完毕后，立刻执行某个方法, 因为 JavaScript 中的函数方法需要在 HTML 文档渲染完成后才可以使用，如果没有渲染完成，此时的 DOM 树是不完整的，这样在调用一些 JavaScript 代码时就可能报出"undefined"错误。 |                                               |
 | document.write()                       | 在文档已加载后使用它（比如在函数中），会覆盖整个文档。       | document.write("<h1>This is a heading</h1>"); |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
-|                                        |                                                              |                                               |
+| document.body.clientHeight             | 可见部分的高度, 包括padding, 但不包括border、水平滚动条、margin的元素的高度 |                                               |
+| document.body.offsetHeight             | 包括padding、border、水平滚动条，但不包括margin的元素的高度  |                                               |
+| document.body.scrollHeight             | 滚动条高, scrollHeight:因为子元素比父元素高，父元素不想被子元素撑的一样高就显示出了滚动条 |                                               |
+| window.screen.height                   | 屏幕分辨率                                                   |                                               |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
@@ -293,7 +327,7 @@ expires:31 Dec 2008
 
 #### 5. 引入公共部分
 
-- 引入公共js  common.js
+- 写入公共js  common.js
 
   ```html
   document.write('<!-----------  公共js和css start----------->');
@@ -406,29 +440,187 @@ expires:31 Dec 2008
 
 
 
-| attribute | description                                                |                                                              |
-| --------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| alt       | alt 属性是一个必需的属性，它规定在图像无法显示时的替代文本 | <img src="smiley-2.gif" alt="Smiley face" width="42" height="42"> |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
-|           |                                                            |                                                              |
+| attribute | description                                                  |                                                              |
+| --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| alt       | alt 属性是一个必需的属性，它规定在图像无法显示时的替代文本   | <img src="smiley-2.gif" alt="Smiley face" width="42" height="42"> |
+| z-index   | 设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。 | \<div id="box" style="z-index: 999">                         |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
+|           |                                                              |                                                              |
 
 
+
+#### 8. 选择器
+
+
+
+| 选择器                                                       | 示例                  | 示例说明                                                  | CSS  |
+| :----------------------------------------------------------- | :-------------------- | :-------------------------------------------------------- | :--- |
+| [.*class*](https://www.runoob.com/cssref/sel-class.html)     | .intro                | 选择所有class="intro"的元素                               | 1    |
+| [#*id*](https://www.runoob.com/cssref/sel-id.html)           | #firstname            | 选择所有id="firstname"的元素                              | 1    |
+| [*](https://www.runoob.com/cssref/sel-all.html)              | *                     | 选择所有元素                                              | 2    |
+| *[element](https://www.runoob.com/cssref/sel-element.html)*  | p                     | 选择所有<p>元素                                           | 1    |
+| *[element,element](https://www.runoob.com/cssref/sel-element-comma.html)* | div,p                 | 选择所有<div>元素和<p>元素                                | 1    |
+| [*element* *element*](https://www.runoob.com/cssref/sel-element-element.html) | div p                 | 选择<div>元素内的所有<p>元素                              | 1    |
+| [*element*>*element*](https://www.runoob.com/cssref/sel-element-gt.html) | div>p                 | 选择所有父级是 <div> 元素的 <p> 元素                      | 2    |
+| [*element*+*element*](https://www.runoob.com/cssref/sel-element-pluss.html) | div+p                 | 选择所有紧接着<div>元素之后的<p>元素                      | 2    |
+| [[*attribute*\]](https://www.runoob.com/cssref/sel-attribute.html) | [target]              | 选择所有带有target属性元素                                | 2    |
+| [[*attribute*=*value*\]](https://www.runoob.com/cssref/sel-attribute-value.html) | [target=-blank]       | 选择所有使用target="-blank"的元素                         | 2    |
+| [[*attribute*~=*value*\]](https://www.runoob.com/cssref/sel-attribute-value-contains.html) | [title~=flower]       | 选择标题属性包含单词"flower"的所有元素                    | 2    |
+| [[*attribute*\|=*language*\]](https://www.runoob.com/cssref/sel-attribute-value-lang.html) | [lang\|=en]           | 选择 lang 属性以 en 为开头的所有元素                      | 2    |
+| [:link](https://www.runoob.com/cssref/sel-link.html)         | a:link                | 选择所有未访问链接                                        | 1    |
+| [:visited](https://www.runoob.com/cssref/sel-visited.html)   | a:visited             | 选择所有访问过的链接                                      | 1    |
+| [:active](https://www.runoob.com/cssref/sel-active.html)     | a:active              | 选择活动链接                                              | 1    |
+| [:hover](https://www.runoob.com/cssref/sel-hover.html)       | a:hover               | 选择鼠标在链接上面时                                      | 1    |
+| [:focus](https://www.runoob.com/cssref/sel-focus.html)       | input:focus           | 选择具有焦点的输入元素                                    | 2    |
+| [:first-letter](https://www.runoob.com/cssref/sel-firstletter.html) | p:first-letter        | 选择每一个<p>元素的第一个字母                             | 1    |
+| [:first-line](https://www.runoob.com/cssref/sel-firstline.html) | p:first-line          | 选择每一个<p>元素的第一行                                 | 1    |
+| [:first-child](https://www.runoob.com/cssref/sel-firstchild.html) | p:first-child         | 指定只有当<p>元素是其父级的第一个子级的样式。             | 2    |
+| [:before](https://www.runoob.com/cssref/sel-before.html)     | p:before              | 在每个<p>元素之前插入内容                                 | 2    |
+| [:after](https://www.runoob.com/cssref/sel-after.html)       | p:after               | 在每个<p>元素之后插入内容                                 | 2    |
+| [:lang(*language*)](https://www.runoob.com/cssref/sel-lang.html) | p:lang(it)            | 选择一个lang属性的起始值="it"的所有<p>元素                | 2    |
+| [*element1*~*element2*](https://www.runoob.com/cssref/sel-gen-sibling.html) | p~ul                  | 选择p元素之后的每一个ul元素                               | 3    |
+| [[*attribute*^=*value*\]](https://www.runoob.com/cssref/sel-attr-begin.html) | a[src^="https"]       | 选择每一个src属性的值以"https"开头的元素                  | 3    |
+| [[*attribute*$=*value*\]](https://www.runoob.com/cssref/sel-attr-end.html) | a[src$=".pdf"]        | 选择每一个src属性的值以".pdf"结尾的元素                   | 3    |
+| [[*attribute**=*value*\]](https://www.runoob.com/cssref/sel-attr-contain.html) | a[src*="runoob"]      | 选择每一个src属性的值包含子字符串"runoob"的元素           | 3    |
+| [:first-of-type](https://www.runoob.com/cssref/sel-first-of-type.html) | p:first-of-type       | 选择每个p元素是其父级的第一个p元素                        | 3    |
+| [:last-of-type](https://www.runoob.com/cssref/sel-last-of-type.html) | p:last-of-type        | 选择每个p元素是其父级的最后一个p元素                      | 3    |
+| [:only-of-type](https://www.runoob.com/cssref/sel-only-of-type.html) | p:only-of-type        | 选择每个p元素是其父级的唯一p元素                          | 3    |
+| [:only-child](https://www.runoob.com/cssref/sel-only-child.html) | p:only-child          | 选择每个p元素是其父级的唯一子元素                         | 3    |
+| [:nth-child(*n*)](https://www.runoob.com/cssref/sel-nth-child.html) | p:nth-child(2)        | 选择每个p元素是其父级的第二个子元素                       | 3    |
+| [:nth-last-child(*n*)](https://www.runoob.com/cssref/sel-nth-last-child.html) | p:nth-last-child(2)   | 选择每个p元素的是其父级的第二个子元素，从最后一个子项计数 | 3    |
+| [:nth-of-type(*n*)](https://www.runoob.com/cssref/sel-nth-of-type.html) | p:nth-of-type(2)      | 选择每个p元素是其父级的第二个p元素                        | 3    |
+| [:nth-last-of-type(*n*)](https://www.runoob.com/cssref/sel-nth-last-of-type.html) | p:nth-last-of-type(2) | 选择每个p元素的是其父级的第二个p元素，从最后一个子项计数  | 3    |
+| [:last-child](https://www.runoob.com/cssref/sel-last-child.html) | p:last-child          | 选择每个p元素是其父级的最后一个子级。                     | 3    |
+| [:root](https://www.runoob.com/cssref/sel-root.html)         | :root                 | 选择文档的根元素                                          | 3    |
+| [:empty](https://www.runoob.com/cssref/sel-empty.html)       | p:empty               | 选择每个没有任何子级的p元素（包括文本节点）               | 3    |
+| [:target](https://www.runoob.com/cssref/sel-target.html)     | #news:target          | 选择当前活动的#news元素（包含该锚名称的点击的URL）        | 3    |
+| [:enabled](https://www.runoob.com/cssref/sel-enabled.html)   | input:enabled         | 选择每一个已启用的输入元素                                | 3    |
+| [:disabled](https://www.runoob.com/cssref/sel-disabled.html) | input:disabled        | 选择每一个禁用的输入元素                                  | 3    |
+| [:checked](https://www.runoob.com/cssref/sel-checked.html)   | input:checked         | 选择每个选中的输入元素                                    | 3    |
+| [:not(*selector*)](https://www.runoob.com/cssref/sel-not.html) | :not(p)               | 选择每个并非p元素的元素                                   | 3    |
+| [::selection](https://www.runoob.com/cssref/sel-selection.html) | ::selection           | 匹配元素中被用户选中或处于高亮状态的部分                  | 3    |
+| [:out-of-range](https://www.runoob.com/cssref/sel-out-of-range.html) | :out-of-range         | 匹配值在指定区间之外的input元素                           | 3    |
+| [:in-range](https://www.runoob.com/cssref/sel-in-range.html) | :in-range             | 匹配值在指定区间之内的input元素                           | 3    |
+| [:read-write](https://www.runoob.com/cssref/sel-read-write.html) | :read-write           | 用于匹配可读及可写的元素                                  | 3    |
+| [:read-only](https://www.runoob.com/cssref/sel-read-only.html) | :read-only            | 用于匹配设置 "readonly"（只读） 属性的元素                | 3    |
+| [:optional](https://www.runoob.com/cssref/sel-optional.html) | :optional             | 用于匹配可选的输入元素                                    | 3    |
+| [:required](https://www.runoob.com/cssref/sel-required.html) | :required             | 用于匹配设置了 "required" 属性的元素                      | 3    |
+| [:valid](https://www.runoob.com/cssref/sel-valid.html)       | :valid                | 用于匹配输入值为合法的元素                                | 3    |
+| [:invalid](https://www.runoob.com/cssref/sel-invalid.html)   | :invalid              | 用于匹配输入值为非法的元素                                | 3    |
+
+
+
+#### 9. 符号 HTML 中有用的字符实体
+
+**注释：**实体名称对大小写敏感！
+
+| 显示结果 | 描述              | 实体名称           | 实体编号 |
+| :------- | :---------------- | :----------------- | :------- |
+|          | 空格              | \&nbsp;            | \&#160;  |
+|          | 也是空格, 大空格  | \&emsp;            |          |
+| <        | 小于号            | \&lt;              | \&#60;   |
+| >        | 大于号            | \&gt;              | \&#62;   |
+| &        | 和号              | \&amp;             | \&#38;   |
+| "        | 引号              | \&quot;            | \&#34;   |
+| '        | 撇号              | \&apos; (IE不支持) | \&#39;   |
+| ￠       | 分（cent）        | \&cent;            | \&#162;  |
+| £        | 镑（pound）       | \&pound;           | \&#163;  |
+| ¥        | 元（yen）         | \&yen;             | \&#165;  |
+| €        | 欧元（euro）      | \&euro;            | \&#8364; |
+| §        | 小节              | \&sect;            | \&#167;  |
+| ©        | 版权（copyright） | \&copy;            | \&#169;  |
+| ®        | 注册商标          | \&reg;             | \&#174;  |
+| ™        | 商标              | \&trade;           | \&#8482; |
+| ×        | 乘号              | \&times;           | \&#215;  |
+| ÷        | 除号              | \&divide;          | \&#247;  |
+| /        | 斜线              | \&#47;             |          |
+
+
+
+#### 10. 问题
+
+1. 找不到favicon.ico
+
+   favicon.ico文件是浏览器收藏网址时显示的图标，当客户端使用浏览器页面时，浏览器会自己主动发起请求获取页面的favicion.ico文件，但是当浏览器请求的favicion.ico文件不存在时，服务器会记录404日志，而且浏览器也会显示404错误,
+
+    用localhost请求会报这个错, 但是用 127.0.0.1 请求 就没有这个报错
+
+   解决办法: 
+
+   1. 办法一: 让服务器不记录访问日志
+   
+      ```js
+      server {
+          server_name www.mylinuxops.com;
+          access_log /var/log/nginx/access.log access_json;
+          location / {
+              root /data/www;
+              index index.html;
+        }
+          location = /favicon.ico {       #精确定位ifavicon.ico文件
+              log_not_found off;          #找不到文件时日志不记录
+              access_log off;             #关闭日志记录
+       }
+   }
+      ```
+
+      
+
+   2. 办法二: 将图标文件保存到指定的目录访问
+   
+      ```js
+      server {
+          server_name www.mylinuxops.com;
+          access_log /var/log/nginx/access.log access_json;
+          location / {
+              root /data/www;
+              index index.html;
+        }
+          location = /favicon.ico {
+              root /data/www/image;
+       }
+      }
+       
+      [root@www ~]# ls /data/www/image/favicon.ico
+   /data/www/image/favicon.ico
+      ```
+
+   3. 办法三: \<link rel="shortcut icon" href="#"/> 将代码 放到 \<head>里, 网上说不推荐使用, 当点一个链接后 会产生2次请求,但是自己实验中并没有发现问题
+   
+   4. 办法四: 将请求的localhost 改为 127.0.0.1 
+   
+   
+
+#### 11. 垂直居中
+
+div的垂直居中问题 vertical-align:middle; 将行距增加到和整个DIV一样高 line-height:200px; 然后插入文字，就垂直居中了。缺点是要控制内容不要换行
+
+
+
+#### 12. target="_blank"
+
+
+
+| attr            | description                | example                                         |
+| --------------- | -------------------------- | ----------------------------------------------- |
+| target="_blank" | 在新标签页打开链接         | \<a href="test.html" target="_blank">test</a>   |
+| target="_self"  | 默认的, 当前标签页打开链接 | \<a href="video.html" target="_self">123123</a> |
+|                 |                            |                                                 |
 
 
 
@@ -441,7 +633,7 @@ expires:31 Dec 2008
 | mouseenter() | 当鼠标指针穿过元素时，会发生 mouseenter 事件                 | $("p").mouseenter(function(){   $("p").css("background-color","yellow"); }); |
 | mouseleave() | 鼠标离开                                                     |                                                              |
 | find()       | 获得当前元素集合中每个元素的后代，通过选择器、jQuery 对象或元素来筛选。 | $("p").find("span").css('color','red');                      |
-|              |                                                              |                                                              |
+| attr()       | 为属性赋值                                                   | $("#test-weekday").attr("placeholder",weekday);              |
 |              |                                                              |                                                              |
 |              |                                                              |                                                              |
 |              |                                                              |                                                              |
