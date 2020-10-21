@@ -293,7 +293,6 @@ expires:31 Dec 2008
 
 
 
-
 - window.onload 与 document.ready
 
   1. document.ready：document.ready可以写多个.ready，可以执行多次，第N次都不会被上一次覆盖。
@@ -313,9 +312,19 @@ expires:31 Dec 2008
 
 
 
+location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如http://www.test.com/#/something，其中http://www.test.com为真实的路径，而#/something则为网页中的位置，称之为**锚点**, 在访问锚点时会自动跳到锚点所在的网页位置，
 
+在对hash写时有个需要注意的地方，如下所示
 
-#### 4. 知识点
+```javascript
+//当前URL为http://www.test.com/location.hash = "#/test"	//http://www.test.com/#/testlocationl.hash = "/#/test"	//http://www.test.com/#/#/test
+```
+
+当写入第一个字符不为为 "#" 时会自动生成一个 "#" 在字符串之前，再把字符串追加到生成的#后面
+
+这样会造成有两个#,此时location.hash输出 "#/#/test"
+
+#### 4. 标签页显示 文字 和 图标
 
 - 浏览器的标签页显示 文字 和 图标
 
@@ -616,6 +625,29 @@ div的垂直居中问题 vertical-align:middle; 将行距增加到和整个DIV�
 
 
 
+| <span style="white-space: nowrap;">attribute &emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space: nowrap;">description &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space: nowrap;">example &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| alt                                                          | 图的一个属性, alt 属性是一个必需的属性，它规定在图像无法显示时的替代文本 | `<img src="smiley-2.gif" alt="Smiley face" width="42" height="42">` |
+| target                                                       | 如果在一个 <a> 标签内包含一个 target 属性，浏览器将会载入和显示用这个标签的 href 属性命名的、名称与这个目标吻合的框架或者窗口中的文档。如果这个指定名称或 id 的框架或者窗口不存在，浏览器将打开一个新的窗口，给这个窗口一个指定的标记，然后将新的文档载入那个窗口。从此以后，超链接文档就可以指向这个新的窗口 | <ul><br/>  `<li><a href="pref.html" target="view_window">Preface</a></li>`  `<li><a href="chap1.html" target="view_window">Chapter 1</a></li><li><a href="chap2.html" target="view_window">Chapter 2</a></li><li><a href="chap3.html" target="view_window">Chapter 3</a></li>`</ul> |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+
+
 | attr            | description                | example                                         |
 | --------------- | -------------------------- | ----------------------------------------------- |
 | target="_blank" | 在新标签页打开链接         | \<a href="test.html" target="_blank">test</a>   |
@@ -625,6 +657,10 @@ div的垂直居中问题 vertical-align:middle; 将行距增加到和整个DIV�
 
 
 # jquery
+
+
+
+#### 1. 函数
 
 
 
