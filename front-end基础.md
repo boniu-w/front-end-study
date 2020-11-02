@@ -210,6 +210,99 @@ window.location.href='https://www.baidu.com'  // 当前页面打开
 
 
 
+#### 10. 数组
+
+
+
+| function | description | example |
+| -------- | ----------- | ------- |
+| push()   |             |         |
+| join()   |             |         |
+|          |             |         |
+|          |             |         |
+
+
+
+
+
+#### 11. bootstraptable
+
+```js
+  $('#table').bootstrapTable({
+            url: '/ms-mcms/emailController/getEmailList',
+            method:'get',
+            pageNumber : 1,
+            pagination: true,
+            // sidePagination: "server",
+            pageSize : 10,
+            pageList : [ 5, 10, 20, 30 ,50],
+            // search: true,
+            responseHandler: function(res) {
+                console.log(res.data)
+                res.data.forEach((item,i)=>{
+                    let date = new Date(item.time);
+                datetime =formatDate(date);
+                res.data[i].time = datetime
+            })
+                return res.data
+            },
+            columns: [{
+                field: 'id',
+                title: '序号'
+            }, {
+                field: 'sender',
+                title: '发件人'
+            }, {
+                field: 'senderCompany',
+                title: '发件人单位'
+            },{
+                field: 'senderPhone',
+                title: '发件人手机号码'
+            },{
+                field: 'content',
+                title: '邮件内容'
+            },{
+                field: 'sendTime',
+                title: '发送时间'
+            }]
+        })
+```
+
+
+
+1. bootstraptable columns 隐藏 
+
+> visible: false
+
+
+
+
+
+
+
+
+
+#### 12. 日期 按一定的格式输出
+
+```js
+        function formatDate(date) {
+            var year = date.getFullYear()
+            var month = format(date.getMonth() + 1)
+            var da = format(date.getDate())
+            var h = format(date.getHours())
+            var m =format(date.getMinutes())
+            var s = format(date.getSeconds())
+            return year + '-' + month + '-' + da + ' ' + h + ':' + m + ':' + s
+        };
+        function format(val) {
+            return Number(val) < 10 ? '0' + val : '' + val
+        };
+```
+
+
+
+
+
 # npm 部分
 
 #### 1. 安装 依赖
@@ -273,13 +366,13 @@ expires:31 Dec 2008
 | -------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
 | window.open(URL,name,features,replace) |                                                              | window.open("http://www.w3school.com.cn")     |
 | window.domain                          | 跨域 属性可以解决因同源安全策略带来的不同文档的属性共享问题  |                                               |
-| window.onload=function(){}             | 用于在网页加载完毕后立刻执行的操作，即当 HTML 文档加载完毕后，立刻执行某个方法, 因为 JavaScript 中的函数方法需要在 HTML 文档渲染完成后才可以使用，如果没有渲染完成，此时的 DOM 树是不完整的，这样在调用一些 JavaScript 代码时就可能报出"undefined"错误。 |                                               |
+| window.onload=function(){}             | 用于在网页加载完毕后立刻执行的操作，即当 HTML 文档加载完毕后，立刻执行某个方法, 因为 JavaScript 中的函数方法需要在 HTML 文档渲染完成后才可以使用，如果没有渲染完成，此时的 DOM 树是不完整的，这样在调用一些 JavaScript 代码时就可能报出"undefined"错误。<br>一般用在body标签和 img标签 |                                               |
 | document.write()                       | 在文档已加载后使用它（比如在函数中），会覆盖整个文档。       | document.write("<h1>This is a heading</h1>"); |
 | document.body.clientHeight             | 可见部分的高度, 包括padding, 但不包括border、水平滚动条、margin的元素的高度 |                                               |
 | document.body.offsetHeight             | 包括padding、border、水平滚动条，但不包括margin的元素的高度  |                                               |
 | document.body.scrollHeight             | 滚动条高, scrollHeight:因为子元素比父元素高，父元素不想被子元素撑的一样高就显示出了滚动条 |                                               |
-| window.screen.height                   | 屏幕分辨率                                                   |                                               |
-|                                        |                                                              |                                               |
+| window.screen.height                   | 获取屏幕分辨率                                               |                                               |
+| window.localtion.reload()              | 刷新页面                                                     |                                               |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
@@ -534,6 +627,21 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
 
 
 
+在table中动态添加tr td
+
+```js
+                                var table = document.getElementById("onDutyMember");
+                                for (let j = 0; j < trLength; j++) {
+                                    var tr = table.insertRow(j);
+                                    for (let i = 0; i < a.length; i++) {
+                                        var td = tr.insertCell(i)
+                                        td.innerText = a[i];
+                                    }
+                                }
+```
+
+
+
 #### 9. 符号 HTML 中有用的字符实体
 
 **注释：**实体名称对大小写敏感！
@@ -670,6 +778,9 @@ div的垂直居中问题 vertical-align:middle; 将行距增加到和整个DIV�
 | mouseleave() | 鼠标离开                                                     |                                                              |
 | find()       | 获得当前元素集合中每个元素的后代，通过选择器、jQuery 对象或元素来筛选。 | $("p").find("span").css('color','red');                      |
 | attr()       | 为属性赋值                                                   | $("#test-weekday").attr("placeholder",weekday);              |
+| height()     | 设置高度                                                     | $('#table-div').height($('#testScreen').css('height'));      |
+| css()        | 设置样式                                                     | $('#table-div').css({'background-color': 'red'})             |
+| html(string) |                                                              | document.getElementById(divId).innerHTML = txt;<br>等效 ->  $("#div").html(txt); |
 |              |                                                              |                                                              |
 |              |                                                              |                                                              |
 |              |                                                              |                                                              |
@@ -693,9 +804,79 @@ div的垂直居中问题 vertical-align:middle; 将行距增加到和整个DIV�
 |              |                                                              |                                                              |
 |              |                                                              |                                                              |
 |              |                                                              |                                                              |
-|              |                                                              |                                                              |
-|              |                                                              |                                                              |
-|              |                                                              |                                                              |
+
+
+
+
+
+#### 2. jquery form 文件 上传
+
+```js
+                        function uploadDutyExcel() {
+                            var formData=new FormData($("#uploadDutyExcel")[0]);
+
+                            $.ajax({
+                                url:"/ms-mcms/dutyDetail/importDutyData",
+                                data:formData,
+                                type: "post",
+                                async:false,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success:function (res) {
+                                    console.log("上传成功")
+                                    console.log(res)
+                                },
+                                error: function (res) {
+                                    console.log("上传失败")
+                                }
+                            })
+
+                        }
+```
+
+
+
+
+
+#### 3. ajax
+
+1. processData : 默认情况下会将发送的数据序列化以适应默认的内容类型application/x-www-form-urlencoded ,如果想发送不想转换的的信息的时候需要手动将其设置为false,在我遇到的是传输的是blob对象的时候就是不需要将传输的数据序列化,一般的还有类似DOM树等
+
+2. contentType: 
+
+   在网络请求中，常用的Content-Type有如下：
+
+> text/html, text/plain, text/css, text/javascript, image/jpeg, image/png, image/gif,
+> application/x-www-form-urlencoded, multipart/form-data, application/json, application/xml 等。
+
+
+
+其中: 
+
+> text/html, text/plain, text/css, text/javascript, image/jpeg, image/png, image/gif, 都是常见的页面资源类型。
+
+
+
+> application/x-www-form-urlencoded, multipart/form-data, application/json, application/xml 这四个是ajax的请求，表单提交或上传文件的常用的资源类型
+
+
+
+form表单中可以定义enctype属性，该属性的含义是在发送到服务器之前应该如何对表单数据进行编码。默认的情况下，表单数据会编码为
+
+> application/x-www-form-unlencoded
+
+
+
+在使用文件上传时候，使用 
+
+> multipart/form-data, 不对字符编码
+
+
+
+
+
+
 
 
 
