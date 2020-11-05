@@ -50,14 +50,17 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 
 
-| 方法                                         | 描述                                                         |
-| -------------------------------------------- | ------------------------------------------------------------ |
-| String  join()                               | 把数组转成字符串                                             |
-| 长度  push()                                 | 在数组的后面添加元素                                         |
-| var formData = new FormData().append("",val) | 为formdata添加属性                                           |
-| object.assign()                              | 用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。 |
-| obj.hasOwnProperty("id");                    | obj 是否有这个 id 属性                                       |
-|                                              |                                                              |
+| <span style="white-space: nowrap;">方法&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space: nowrap;">描述&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space: nowrap;">例子&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| String  join()                                               | 把数组转成字符串                                             |                                                              |
+| 长度  push()                                                 | 在数组的后面添加元素                                         |                                                              |
+| var formData = new FormData().append("",val)                 | 为formdata添加属性                                           |                                                              |
+| object.assign()                                              | 用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。 |                                                              |
+| obj.hasOwnProperty("id");                                    | obj 是否有这个 id 属性                                       |                                                              |
+| test()                                                       | 用于检测一个字符串是否匹配某个模式. RegExpObject.test(*string*) | var regex = /^1[3\|4\|5\|7\|8]\d{9}$/;<br>var phone = 18929382734<br>var boo = regex.test(phone) |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
 
 
 
@@ -1114,38 +1117,35 @@ form表单中可以定义enctype属性，该属性的含义是在发送到服务
 
 
 
-```
-function submit1() {
-    var name = $("#name").val();
-    let age = $("#age").val();
+##### ajax 与 Object 数据类型 
 
-    let obj = {};
-    obj["name"] = name;
-    obj["age"] = age;
+后台接收数据 不能加 @RequestBody
 
-    console.log(obj)
-    $.ajax({
-        url: "http://127.0.0.1:33333/validateTestController/validate",
-        data: obj,
-        type: "get",
-
-        cache: false,
-        // processData: false,  // 告诉jQuery不要去处理发送的数据 processData 可不得了,
-        // contentType: false,  // 告诉jQuery不要去设置Content-Type请求头
-        success: function (res) {
-            console.log(res)
-        },
-        error: function () {
-            console.log("error")
-        }
-    })
-
-}
+```js
+    function ajaxObjectTest() {
+        $.ajax({
+            url: "http://127.0.0.1:33333/validateTestController/validatePost",
+            method: "post",
+            data: {name: "wg", age: 12},
+            success: function (res) {
+                console.log("ajax -> ", res)
+            },
+            error: function (error) {
+                console.log("ajax error -> ", error)
+            }
+        })
+    }
 ```
 
 
 
+##### ajax 与 FormData 数据类型
 
+ 不能用 
+
+get 的话 会 跨域错误
+
+post 的话 后台得不到数据
 
 
 
@@ -1162,6 +1162,89 @@ col-xs-* 超小屏幕 手机 (<768px)
 .col-md-* 中等屏幕 桌面显示器 (≥992px)
 
 .col-lg-* 大屏幕 大桌面显示器 (≥1200px)
+
+
+
+
+
+# axios
+
+
+
+#### axios 与 Object 数据类型
+
+ 后台接收 要加 @RequestBody 
+
+```js
+function axiosTest() {
+    axios({
+        url: "http://127.0.0.1:33333/validateTestController/validatePost",
+        method: "post",
+        data: {name: "wg", age: 12}
+    })
+        .then(function (res) {
+            console.log(res)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+
+}
+
+axiosTest()
+```
+
+
+
+#### axios 与 FormData 数据类型
+
+
+
+```js
+"Content-Type": "application/x-www-form-urlencoded"  // 对应 formData 类型数据, 如果是json 形式数据 会报如下错误
+```
+
+>  Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported
+
+
+
+
+
+
+
+
+
+# 状态码
+
+
+
+| 状态码 | 含义                               |
+| ------ | ---------------------------------- |
+| 415    | 服务器无法处理请求附带的媒体格式！ |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+|        |                                    |
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
