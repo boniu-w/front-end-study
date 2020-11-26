@@ -480,10 +480,18 @@ xmlhttprequest -> formdata
 ## 14. const, let, var 
 
 1. const定义的变量不可以修改，而且必须初始化
-
 2. var定义的变量可以修改，如果不初始化会输出undefined，不会报错。
-
 3. let是块级作用域，函数内部使用let定义后，对函数外部无影响。
+
+
+
+### 15. a标签的点击事件
+
+> \<a href="javascript:void(0);" onclick="js_method()"</a>
+
+
+
+
 
 
 
@@ -559,7 +567,7 @@ expires:31 Dec 2008
 | window.localtion.reload()              | 刷新页面                                                     |                                               |
 | e.which                                | `which`属性用于**返回触发当前事件时按下的键盘按键或鼠标按钮**。该属性属于jQuery的`Event`对象(实例) |                                               |
 | document.querySelector()               |                                                              | document.querySelector("#enterEvent");        |
-|                                        |                                                              |                                               |
+| onerror                                | 目前 见于图片的 属性                                         | onerror=`javascript:this.src=''图片" '        |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
@@ -1245,6 +1253,16 @@ col-xs-* 超小屏幕 手机 (<768px)
 
 
 
+### 2. 调整列之间的宽度
+
+> \<div class="col-md-6 column div-plate-jijianjiancha" style="background-color: white;width: 49.5%; margin-left: 1%;">
+
+
+
+### 3. 栅格的间距
+
+间隙宽度为30px（一个列的每边分别是15px）
+
 
 
 # axios
@@ -1327,12 +1345,93 @@ axiosTest()
 | position: relative;                                          | 相对定位,如果对一个元素进行相对定位，它将出现在它所在的位置上。然后，可以通过设置垂直或水平位置，让这个元素“相对于”它的起点进行移动 | #box_relative {   position: relative;   left: 30px;   top: 20px; } |
 | :after                                                       | 伪元素在元素之后添加内容,默认地，这个伪元素是行内元素，不过可以使用属性 display 改变这一点。 |                                                              |
 | cursor: pointer;                                             | 鼠标经过 变手型                                              | .section4-0 div{     cursor: pointer; }                      |
-| content:                                                     |                                                              |                                                              |
+| content:                                                     |                                                              | :after{<br>content: "hello world"}                           |
+| :nth-child(n)                                                | 选择器匹配父元素中的第 n 个子元素，元素类型没有限制。*n* 可以是一个数字，一个关键字，或者一个公式  ,例子: 指定每个 p 元素匹配的父元素中第 2 个子元素的背景色： | p:nth-child(2) {    background:#ff0000; }                    |
+| :hover                                                       | 选择器用于选择鼠标指针浮动在上面的元素                       | a:hover {  background-color:yellow; }                        |
+| letter-spacing                                               | 字母间距                                                     |                                                              |
+| line-height                                                  | 设置行高(行间的距离), 该属性会影响行框的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离, line-height 与 font-size 的计算值之差（在 CSS 中成为“行间距”）分为两半，分别加到一个文本行内容的顶部和底部。可以包含这些内容的最小框就是行框。 |                                                              |
 |                                                              |                                                              |                                                              |
 |                                                              |                                                              |                                                              |
 |                                                              |                                                              |                                                              |
 |                                                              |                                                              |                                                              |
 |                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
+
+
+
+
+
+### 省略号 显示 超出的文本
+
+```css
+div {  
+  white-space:nowrap;/* 规定文本是否折行 */  
+  overflow: hidden;/* 规定超出内容宽度的元素隐藏 */
+  text-overflow: ellipsis;
+  /* 规定超出的内容文本省略号显示，通常跟上面的属性连用，因为没有上面的属性不会触发超出规定的内容 */
+}
+
+div {      
+  overflow: hidden;      
+  text-overflow: ellipsis;      
+  display: -webkit-box; /* 将对象作为弹性伸缩盒子模型显示 */      
+  -webkit-line-clamp: 4; /* 控制最多显示几行 */      
+  -webkit-box-orient: vertical; /* 设置或检索伸缩盒对象的子元素的排列方式 */    
+}
+```
+
+
+
+### CSS的inline、block与inline-block
+
+**块级元素(block)：**
+
+1. 独霸一行，总是在新行上开始+
+
+2. 宽度缺省是它父级元素的100%，除非设定一个宽度
+3. 高度、行高、外边距、内边距都可以设置
+4. 可以容纳其他内联元素或者其他块元素
+
+**行内元素(inline)：**
+
+1. 和其他元素都在一行上，遇到父级元素边界会自动换行
+2. 高、行高以及内外边距都不可以改变
+3. 宽度与内容一样宽，且不可改变
+4. 对于行内元素，需要注意的是：设置宽度width无效，设置高度无效，可以通过设置line-height来设置，设置margin只有左右有效，上下无效，设置padding只有左右有效，上下无效
+5. 
+
+**行内块元素(inline-block)：***
+
+1. 元素排列在一行
+2. 宽度默认由内容决定
+3. 元素间默认有间距
+4. 支持宽高、外边距、内边距的所有样式的设置
+
+|          |                                                              |
+| -------- | ------------------------------------------------------------ |
+| 块级元素 | header,form,ul,ol, table, div, article, hr, aside, figure, canvas, video, audio, footer |
+| 行内元素 | a,b,strong,span,img,label,button,input,select,textarea       |
+|          |                                                              |
+
+
+
+### inherit, unset, initial, normal
+
+initial：`initial` 关键字用于设置 CSS 属性为它的默认值，可作用于任何 CSS 样式。
+
+inherit：每一个 CSS 属性都有一个特性就是，这个属性必然是默认继承的 (`inherited: Yes`) 或者是默认不继承的 (`inherited: no`)其中之一，我们可以在 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference) 上通过这个索引查找，判断一个属性的是否继承特性。
+
+unset：它是关键字 `initial` 和 `inherit` 的组合。什么意思呢？也就是当我们给一个 CSS 属性设置了 `unset` 的话：
+
+1. 如果该属性是默认继承属性，该值等同于 `inherit`
+2. 如果该属性是非继承属性，该值等同于 `initial`
+
+
 
 
 
