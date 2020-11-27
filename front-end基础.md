@@ -1,6 +1,6 @@
 # vue 部分
 
-#### 1. 创建一个基于 webpack 模板的新项目
+## 1. 创建一个基于 webpack 模板的新项目
 
  vue init webpack my-project
 
@@ -17,7 +17,7 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
  -----------------------------------------------------------------------
 
 
-#### 2. vue中的单选框
+## 2. vue中的单选框
 
 ```js
 	<a-checkbox-group v-decorator="['personTypeId', {}]">
@@ -29,9 +29,9 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 
 
-#### 3. vue computed
+## 3. vue computed
 
-#### 4. this.$emit('ok')
+## 4. this.$emit('ok')
 
 子组件 向父组件 传值
 
@@ -43,7 +43,7 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 # 								js 部分
 
-#### function
+## function
 
 
 
@@ -63,7 +63,7 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 
 
-#### 1. JavaScript  hasOwnProperty()  : obj 的方法
+## 1. JavaScript  hasOwnProperty()  : obj 的方法
 
 Object的`hasOwnProperty()`方法返回一个布尔值，判断对象是否包含特定的自身（非继承）属性
 
@@ -73,7 +73,7 @@ obj.hasOwnProperty("id");  // obj 是否有这个 id 属性
 
 
 
-#### 2. JavaScript  .join()  : 数组的方法
+## 2. JavaScript  .join()  : 数组的方法
 
 join() 用于把数组中的所有元素放到一个字符串中, 
 
@@ -89,7 +89,7 @@ separator : 可选,指定使用的分隔符,如果省略,则使用逗号作为�
 
 
 
-#### 3. push() :  数组的方法
+## 3. push() :  数组的方法
 
 push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
 
@@ -144,7 +144,7 @@ George,John,Thomas,James
 
 
 
-#### 4. sessionStorage.setItem
+## 4. sessionStorage.setItem
 
 使用 sessionStorage 创建一个本地存储的 key/value 对
 
@@ -156,7 +156,7 @@ sessionStorage.getItem(key);
 
 
 
-#### 5. el
+## 5. el
 
 获取{}中指定的对象（参数、对象等）的值, 其搜寻的范围依次是：page、request、session、application
 
@@ -164,7 +164,7 @@ request.getAttribute(name) === ${name}
 
 
 
-#### 6. js内置对象
+## 6. js内置对象
 
 Math
 
@@ -176,7 +176,7 @@ String
 
 
 
-#### 7. 立即执行函数
+## 7. 立即执行函数
 
 (function(arg){})(arg)
 
@@ -184,7 +184,7 @@ String
 
 后半部分: (arg)传入参数 并立即执行
 
-#### 8. 新窗口打开 , 当前页面打开
+## 8. 新窗口打开 , 当前页面打开
 
 ```js
 onclick="window.open('https://www.baidu.com')" // 新窗口打开
@@ -193,7 +193,7 @@ window.location.href='https://www.baidu.com'  // 当前页面打开
 
 
 
-#### 9. 将两个字符串数组 合并为一个 对象
+## 9. 将两个字符串数组 合并为一个 对象
 
 ```js
 						var values = new Array();
@@ -215,7 +215,7 @@ window.location.href='https://www.baidu.com'  // 当前页面打开
 
 
 
-#### 10. 数组
+## 10. 数组
 
 
 
@@ -230,7 +230,7 @@ window.location.href='https://www.baidu.com'  // 当前页面打开
 
 
 
-#### 11. bootstraptable
+## 11. bootstraptable
 
 ```js
   $('#table').bootstrapTable({
@@ -287,7 +287,7 @@ window.location.href='https://www.baidu.com'  // 当前页面打开
 
 
 
-#### 12. 日期 按一定的格式输出
+## 12. 日期 按一定的格式输出
 
 ```js
         function formatDate(date) {
@@ -306,7 +306,7 @@ window.location.href='https://www.baidu.com'  // 当前页面打开
 
 
 
-#### 13. formdata
+## 13. formdata
 
 FormData 对象 数据  , 后台用 request.getparameter 接收 也可以用 实体类接收或 map
 
@@ -497,7 +497,7 @@ xmlhttprequest -> formdata
 
 # npm 部分
 
-#### 1. 安装 依赖
+## 1. 安装 依赖
 
 ```
 cnpm install echarts --save
@@ -509,7 +509,7 @@ cnpm install echarts --save
 
 # html
 
-#### 1. meta
+## 1. meta
 
 <meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
 
@@ -538,7 +538,7 @@ expires:31 Dec 2008
 
 
 
-#### 2. document.domain
+## 2. document.domain
 
 跨域访问的
 
@@ -550,7 +550,7 @@ expires:31 Dec 2008
 
 
 
-#### 3. function,attribute
+## 3. function,attribute
 
 
 
@@ -568,7 +568,7 @@ expires:31 Dec 2008
 | e.which                                | `which`属性用于**返回触发当前事件时按下的键盘按键或鼠标按钮**。该属性属于jQuery的`Event`对象(实例) |                                               |
 | document.querySelector()               |                                                              | document.querySelector("#enterEvent");        |
 | onerror                                | 目前 见于图片的 属性                                         | onerror=`javascript:this.src=''图片" '        |
-|                                        |                                                              |                                               |
+| location                               | location 对象描述了与一个给定的 Window对象关联的完整 URL。location对象的每个属性都描述了URL的不同特性。 |                                               |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
 |                                        |                                                              |                                               |
@@ -597,19 +597,46 @@ expires:31 Dec 2008
 
 
 
+### location
+
 location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如http://www.test.com/#/something，其中http://www.test.com为真实的路径，而#/something则为网页中的位置，称之为**锚点**, 在访问锚点时会自动跳到锚点所在的网页位置，
 
 在对hash写时有个需要注意的地方，如下所示
 
 ```javascript
-//当前URL为http://www.test.com/location.hash = "#/test"	//http://www.test.com/#/testlocationl.hash = "/#/test"	//http://www.test.com/#/#/test
+//当前URL为http://www.test.com/
+location.hash = "#/test"	
+//http://www.test.com/#/test
+locationl.hash = "/#/test"	
+//http://www.test.com/#/#/test
 ```
 
 当写入第一个字符不为为 "#" 时会自动生成一个 "#" 在字符串之前，再把字符串追加到生成的#后面
 
 这样会造成有两个#,此时location.hash输出 "#/#/test"
 
-#### 4. 标签页显示 文字 和 图标
+
+
+location: 该属性获取页面的url 地址
+
+| 属性     | 描述                              |
+| :------- | :-------------------------------- |
+| hash     | 从井号 (#) 开始的 URL（锚）       |
+| host     | 主机名和当前 URL 的端口号         |
+| hostname | 当前 URL 的主机名                 |
+| href     | 完整的 URL                        |
+| pathname | 当前 URL 的路径部分               |
+| port     | 当前 URL 的端口号                 |
+| protocol | 当前 URL 的协议                   |
+| search   | 从问号 (?) 开始的 URL（查询部分） |
+
+
+
+
+
+
+
+## 4. 标签页显示 文字 和 图标
 
 - 浏览器的标签页显示 文字 和 图标
 
@@ -619,7 +646,7 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
   ```
 
 
-#### 5. 引入公共部分
+## 5. 引入公共部分
 
 - 写入公共js  common.js
 
@@ -708,7 +735,7 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
 
 
 
-#### 6. 列表
+## 6. 列表
 
 ```html
 <html>
@@ -730,7 +757,7 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
 
 
 
-#### 7. 属性
+## 7. 属性
 
 
 
@@ -758,7 +785,7 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
 
 
 
-#### 8. 选择器
+## 8. 选择器
 
 
 
@@ -911,7 +938,7 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
 
 
 
-#### 9. 符号 HTML 中有用的字符实体
+## 9. 符号 HTML 中有用的字符实体
 
 **注释：**实体名称对大小写敏感！
 
@@ -938,7 +965,7 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
 
 
 
-#### 10. 问题
+## 10. 问题
 
 1. 找不到favicon.ico
 
@@ -992,13 +1019,13 @@ location.hash : 一般情况下为URL后 "#" 及其后面一部分组成，如ht
    
    
 
-#### 11. 垂直居中
+## 11. 垂直居中
 
 div的垂直居中问题 vertical-align:middle; 将行距增加到和整个DIV一样高 line-height:200px; 然后插入文字，就垂直居中了。缺点是要控制内容不要换行
 
 
 
-#### 12. target="_blank"
+## 12. target="_blank"
 
 
 
@@ -1020,7 +1047,7 @@ div的垂直居中问题 vertical-align:middle; 将行距增加到和整个DIV�
 
 
 
-#### 13. XMLHttpRequest
+## 13. XMLHttpRequest
 
 
 
@@ -1060,7 +1087,7 @@ function submit3() {
 
 
 
-#### 1. 函数
+## 1. 函数
 
 
 
@@ -1101,7 +1128,7 @@ function submit3() {
 
 
 
-#### 2. jquery form 文件 上传
+## 2. jquery form 文件 上传
 
 ```js
                         function uploadDutyExcel() {
@@ -1170,7 +1197,7 @@ function submit3() {
 
 
 
-#### 3. ajax
+## 3. ajax
 
 1. processData : 默认情况下会将发送的数据序列化以适应默认的内容类型application/x-www-form-urlencoded ,如果想发送不想转换的的信息的时候需要手动将其设置为false,在我遇到的是传输的是blob对象的时候就是不需要将传输的数据序列化,一般的还有类似DOM树等
 
@@ -1205,7 +1232,7 @@ form表单中可以定义enctype属性，该属性的含义是在发送到服务
 
 
 
-##### ajax 与 Object 数据类型 
+### ajax 与 Object 数据类型 
 
 后台接收数据 不能加 @RequestBody
 
@@ -1227,7 +1254,7 @@ form表单中可以定义enctype属性，该属性的含义是在发送到服务
 
 
 
-##### ajax 与 FormData 数据类型
+### ajax 与 FormData 数据类型
 
  不能用 
 
@@ -1241,7 +1268,7 @@ post 的话 后台得不到数据
 
 # bootstrap
 
-#### 1. 栅格
+## 1. 栅格
 
 col-xs-* 超小屏幕 手机 (<768px)
 
@@ -1251,15 +1278,11 @@ col-xs-* 超小屏幕 手机 (<768px)
 
 .col-lg-* 大屏幕 大桌面显示器 (≥1200px)
 
-
-
-### 2. 调整列之间的宽度
+## 2. 调整列之间的宽度
 
 > \<div class="col-md-6 column div-plate-jijianjiancha" style="background-color: white;width: 49.5%; margin-left: 1%;">
 
-
-
-### 3. 栅格的间距
+## 3.  栅格的间距
 
 间隙宽度为30px（一个列的每边分别是15px）
 
@@ -1269,7 +1292,7 @@ col-xs-* 超小屏幕 手机 (<768px)
 
 
 
-#### axios 与 Object 数据类型
+## axios 与 Object 数据类型
 
  后台接收 要加 @RequestBody 
 
@@ -1294,7 +1317,7 @@ axiosTest()
 
 
 
-#### axios 与 FormData 数据类型
+## axios 与 FormData 数据类型
 
 
 
@@ -1442,6 +1465,10 @@ unset：它是关键字 `initial` 和 `inherit` 的组合。什么意思呢？�
 # ts
 
 
+
+
+
+### 特殊符号的含义
 
 
 
