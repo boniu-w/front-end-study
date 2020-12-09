@@ -1139,6 +1139,26 @@ function submit3() {
 
 
 
+## 14.  页面失去焦点
+
+<script>
+    document.addEventListener('visibilitychange', function () {
+        var isHidden = document.hidden;
+        if (isHidden) {
+            //失去焦点
+            document.title = '小主，快回来';
+        }
+        else {
+            //未失去焦点
+            document.title = 'xxx后台管理';
+        }
+    });
+</script>
+
+
+
+
+
 
 
 ## 14. 基础知识
