@@ -43,7 +43,7 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 # 								js 部分
 
-## function
+## I. function
 
 
 
@@ -88,9 +88,15 @@ JSONObject 示例:
 
 
 
+## II. 标签
 
 
 
+| label    | description                                  | example |
+| -------- | -------------------------------------------- | ------- |
+| noscript | 用来定义在脚本未被执行时的替代内容（文本）。 |         |
+|          |                                              |         |
+|          |                                              |         |
 
 
 
