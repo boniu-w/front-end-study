@@ -29,7 +29,23 @@ v-model不仅可以给input赋值还可以获取input中的数据，而且数据
 
 
 
-## 3. vue computed
+## 3. vue watch created computed
+
+
+
+created: html加载完成之前，执行。执行顺序：父组件-子组件
+
+mounted: html加载完成后执行。执行顺序：子组件-父组件
+
+methods：事件方法执行
+
+watch：watch是去监听一个值的变化，然后执行相对应的函数。
+
+computed：computed是计算属性，也就是依赖其它的属性计算所得出最后的值
+
+
+
+
 
 ## 4. this.$emit('ok')
 
@@ -2085,7 +2101,24 @@ render() {
 
 
 
+# nginx 
 
+
+
+## location
+
+
+
+| 模式                  | 含义                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| `location = /uri`     | = 表示精确匹配                                               |
+| `location ^~ /uri`    | ^ 进行前缀匹配，~ 表示区分大小写                             |
+| `location ~ pattern`  | ~ 区分大小写的匹配                                           |
+| `location ~* pattern` | ~* 不区分大小写的匹配                                        |
+| `location /uri`       | 不带任何修饰符，也表示前缀匹配，但是在正则匹配之后           |
+| `location /`          | 通用匹配，任何未匹配到其它 location 的请求都会匹配到，相当于 switch 中的 default |
+| `location !~`         | 区分大小写不匹配                                             |
+| `location !~*`        | 不区分大小写不匹配                                           |
 
 
 

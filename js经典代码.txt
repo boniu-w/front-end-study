@@ -1,0 +1,301 @@
+把如下代码加入<body>区域中:    
+后退 前进    
+<!--<input type="button" value="后退" onClick="history.go(-1)">    
+<input type="button" value="前进" onClick="history.go( 1 );return true;">    
+
+返回    
+<form><input type="button" value="返回上一步" onClick="history.back(-1)"></form>    
+
+查看源码    
+<input type="button" name="view" value="查看源码" onClick="window.location="view-source:" +window.location.href">    
+
+禁止查看源码    
+<body oncontextmenu="return false"></body>    
+
+刷新按钮一    
+<input type="button" value="刷新按钮一" onClick="ReloadButton()">    
+<script>function ReloadButton(){location.href="i001.htm";}</script>    
+
+刷新按钮二    
+<input type="button" value="刷新按钮二" onClick="history.go(0)">    
+
+回首页按钮    
+<input type="button" value="首页" onClick="HomeButton()">    
+<script>function HomeButton(){location.href=http://www.winliuxq.com/;}</script>    
+
+弹出警告框    
+<input type="button" value="弹出警告框" onClick="AlertButton()">    
+<script>function AlertButton(){window.alert("要多多光临呀！");}</script>    
+
+状态栏信息    
+<input type="button" value="状态栏信息" onClick="StatusButton()">    
+<script>function StatusButton(){window.status="要多多光临呀！";}</script>    
+
+背景色变换    
+<form><input type="button" value="背景色变换" onClick="BgButton()"></form>    
+<script>function BgButton(){    
+if (document.bgColor=='#00ffff')    
+     {document.bgColor='#ffffff';}    
+else{document.bgColor='#00ffff';}    
+}    
+</script>    
+
+打开新窗口    
+<input type="button" value="打开新窗口" onClick="NewWindow()">    
+<script>function NewWindow(){window.open("c01.htm","","height=240,width=340,status=no,location=no,toolbar=no,directories=no,menubar=no");}    
+</script>    
+
+窗口最小化    
+<OBJECT id="min" type="application/x- oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">< PARAM name="Command" value="Minimize"></OBJECT>< button onClick="min.Click()">窗口最小化</button>    
+
+全屏代码    
+<input type="BUTTON" name="FullScreen" value="全屏显示" onClick="window.open(document.location, 'butong_net', 'fullscreen')">    
+
+关闭窗口    
+<OBJECT id=closes type="application/x- oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">< param name="Command" value="Close"></object>< input type="button" value="关闭窗口" onClick="closes.Click();">    
+
+关闭窗口    
+<input type=button value=关闭窗口 onClick="javascript:self.close()">    
+
+最大化    
+<object id=big classid="clsid:ADB880A6-D8FF-11CF-9377-00AA003B7A11">    
+<param name="Command" value="Maximize"></object><input type=button value=最大化 onClick=big.Click()>    
+
+关闭输入法    
+<input style="ime-mode:disabled" value=关闭输入法>    
+
+链接按钮1    
+<input type="button" value="链接按钮 1" onClick="window.open('http://www.winliuxq.com/', 'Sample', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=yes,width=790,height=520,left=0,top=0')" name="input">    
+
+链接按钮2    
+<input type="BUTTON" NAME="Button" value="链接按钮2" onClick="showModalDialog('http://www.winliuxq.com/')">    
+
+链接按钮3    
+<input type="submit" value="链接按钮3" onClick="location.href='http://www.winliuxq.com/'">    
+
+警告框显示源代码    
+<BUTTON onClick=alert(document.documentElement.outerHTML) style="width:110">警告框显示源代码</BUTTON>    
+
+点击后按钮清空    
+<input type=button value='打印' onClick="this.style.visibility='hidden';window.print();">    
+
+打印    
+<input type=button value='打印' onClick="window.print();">    
+
+打印预览    
+<OBJECT classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" height=0 id=wb name=wb width=0></OBJECT>    
+<input type=button value=打印预览 onclick="wb.execwb(7,1)">    
+
+另存为    
+<input onClick="document.execCommand('saveas','true','常用代码.htm')" type=button value=另存为>    
+
+点击自动复制    
+<script>function oCopy(obj){obj.select();js=obj.createTextRange();js.execCommand("Copy")}</script>    
+<input type="text" value="点击自动复制" onClick="oCopy(this)" size="11">    
+
+自动选中    
+<input value="自动选中" onFocus="this.select()" onMouseOver="this.focus()" size="11">    
+
+打开源代码    
+<BUTTON onClick="document.location = 'view-source:' + document.location" size="7">打开源代码</BUTTON>    
+
+新窗口延迟打开    
+<input type=button value=新窗口延迟打开 onClick=javascript:setTimeout("window.open('http://www.winliuxq.com/')",10000)>    
+
+实现选中文本框里的前一半的内容    
+<input type="text" value="选中文本框里的前一半的内容" size=30 onmouseover="this.select();tR=document.selection.createRange();tR.moveEnd('character',-8);tR.select();">    
+<input type="text" value="选中部分内容，非IE可以用这个" size=30 onmouseover="this.selectionStart=this.value.length-4;this.selectionEnd=this.value.length">    
+
+点击清空文字    
+<input type="text" name="artist" size=14 value="点击清空文字" onmouseover=this.focus() onfocus=this.select() onclick="if(this.value==' 点击清空文字')this.value=''">    
+
+点击清空文字    
+<input name=name size=11 value=点击清空文字 onMouseOver=this.focus() onblur="if (this.value =='') this.value='点击清空文字'" onFocus=this.select() onClick="if (this.value=='点击清空文字 ') this.value=''">    
+
+等于标题(title):    
+<input type="text" value="" id="aa" size="20">    
+<script>document.getElementById("aa").value=document.title;</script>    
+
+检测IE是否脱机    
+<input type="button" value="测试" onclick="alert(window.navigator.onLine)">    
+
+11种刷新按钮的方法    
+<input type=button value=刷新 onClick="history.go(0)">    
+<input type=button value=刷新 onClick="location.reload()">    
+<input type=button value=刷新 onClick="location=location">    
+<input type=button value=刷新 onClick="location.assign(location)">    
+<input type=button value=刷新 onClick="document.execCommand('Refresh')">    
+<input type=button value=刷新 onClick="window.navigate(location)">    
+<input type=button value=刷新 onClick="location.replace(location)">    
+<input type=button value=刷新 onClick="window.open('自身的文件','_self')">    
+<input type=button value=刷新 onClick=document.all.WebBrowser.ExecWB(22,1)>    
+<OBJECT classid=CLSID:8856F961-340A-11D0-A96B-00C04FD705A2 height=0 id=WebBrowser width=0></OBJECT>    
+<form action="自身的文件"><input type=submit value=刷新></form>    
+<a id=a1 href="自身的文件"></a><input type=button value=刷新 onClick="a1.click()"> 
+
+========================================================================================================= 
+脚本说明:    
+把如下代码加入<body>区域中：    
+<a href="#" onClick=document.execCommand("open")>打开</a>   
+
+<a onclick="window.open('i001.htm','','height=300,width=300,resizable=no,location=net');" href="">打开指定大小网页</a   
+
+<a href="#" onClick=location.replace("view-source:"+location)>使用 记事本 编辑</a>   
+
+<a href="#" onClick=document.execCommand("saveAs")>另存为</a>   
+
+<a href="#" onClick=document.execCommand("print")>打印</a>   
+<a href="javascript:window.print();">打印</a>   
+
+<a href=mailto:429752806@163.com>发送E-mail</a>   
+
+<a href="#" onClick=document.execCommand("selectAll")>全选</a>   
+
+<a href="#" onClick=location.reload()>刷新1</a>   
+
+<a href="#" onClick=history.go(0)>刷新2</a>   
+
+<a href="#" onClick=location.replace("view-source:"+location)>查看源文件</a>   
+
+<a href="#" onClick=window.open(document.location,"url","fullscreen")>全屏显示</a>   
+
+<a href="#" onClick=window.external.showBrowserUI("PrivacySettings",null)>internet选项</a>   
+
+<a href="#" oncontextmenu="window.open(this.href);return false;">单击右键将在新窗口中打开</a>   
+
+<a href="#" onClick=history.go(1)>前进1</a>   
+
+<a href="#" onClick=history.forward()>前进2</a>   
+
+<a href="#" onClick=history.go(-1)>后退1</a>   
+
+<a href="#" onClick=history.back()>后退2</a>   
+
+<a href="#" onClick=window.external.showBrowserUI("OrganizeFavorites",null)>整理收藏夹</a>   
+
+<SPAN onClick="window.external.addFavorite('http://www.winliuxq.com /','网页特效站点')" style="CURSOR: hand" title=网页特效站点>加入收藏</SPAN>    
+
+<a href="#" onClick="window.external.addFavorite('http://www.winliuxq.com/','网页特效站点')">添加到收藏夹</A>   
+
+<a href="javascript:window.external.AddFavorite('http://www.winliuxq.com/', '网页特效站点')">点击加入收藏夹</a>   
+
+<a href="#" onmouseover="window.external.addFavorite('http://www.winliuxq.com /','网页特效站点')" target="_self" >鼠标感应收藏本站</a>   
+
+<a href="#" onmouseover="this.style.behavior='url(#default#homepage)'; this.setHomePage('http://www.yiloo.com/js/');" target="_self">鼠标感应设为首页</a>    
+
+<a href="javascript:window.close()">关闭窗口</a>   
+
+<a href="#" onClick=window.close();return false)>关闭窗口</a>   
+
+<a href="#" onClick=setTimeout(window.close(),3000)>3秒关闭本窗口</a>   
+
+<script>   
+function shutwin(){    
+window.close();    
+return;}    
+</script>   
+<a href="javascript:shutwin();">关闭本窗口</a>   
+
+<SPAN onClick="var strHref=window.location.href; this.style.behavior='url(#default#homepage)'; this.setHomePage('http://www.winliuxq.com/');" style="CURSOR: hand">设为首页</SPAN>   
+
+等于标题栏:<script>document.write(document.title);</script>   
+
+<a href="javascript:void(0);" onClick='window.external.AddFavorite(location.href, document.title);'>收藏本页</a>   
+
+<a href="javascript:window.external.AddFavorite(document.location.href, document.title)">收藏本页</a>   
+
+<a href=javascript:window.external.addChannel("typhoon.cdf")>加入频道</a>   
+
+<a href="i003.htm" onclick="return false;" ondblclick="window.open('i003.htm');">双击打开链接</a>   
+
+<style>#close a:hover {background:url(javascript:window.opener=0; window.close());}</style><div id=close><a href="">关闭窗口</a></div>   
+
+<A HREF="javascript:void(0)" onMouseover="alert('对不起,禁止选中!')">链接禁止</A>   
+<a href="" onMouseOver="alert('本站域名:http://www.winliuxq.com/');return true;">记住本站域名</a>   
+
+滚动条在左侧,将<html>改为<HTML DIR="RTL"> 
+
+网页半透明    
+<body style="filter:Alpha(Opacity=50)">   
+
+随机选择背景色    
+<body>   
+<script>   
+document.body.style.background=(["red","blue","pink","navy","gray","yellow","green","purple"])[parseInt(Math.random()*8)];    
+</script>   
+
+框架页中不显示滚动条：    
+<SCRIPT>   
+self.moveTo(0,0)    
+self.resizeTo(screen.availWidth,screen.availHeight)    
+</SCRIPT>   
+
+防止网页被框架    
+<SCRIPT LANGUAGE=JAVASCRIPT>   
+if (top.location !== self.location) {    
+top.location=self.location;    
+}    
+</SCRIPT>   
+
+永远都会带着框架    
+<script language="javascript"><!--    
+if (window == top)top.location.href = "frame.htm"; //frame.htm为框架网页    
+// --></script>   
+
+窗口自动最大化    
+<script language="JavaScript"><!--    
+self.moveTo(0,0)    
+self.resizeTo(screen.availWidth,screen.availHeight)    
+//--></script>   
+
+打开窗口自动最大化    
+<OBJECT classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" onreadystatechange="if (this.readyState==4) this.Click();" VIEWASTEXT><PARAM name="Command" value="Maximize"></OBJECT>   
+
+爽眼闪屏代码    
+<script>var color = new Array;color[1] = "black";color[2] = "white";for(x = 0; x <3; x++){document.bgColor = color[x];if(x == 2){x = 0;}}</script>   
+
+不能被另存为    
+<noscript><iframe src="*.html"></iframe></noscript>   
+
+汉字字库调用    
+<script>   
+for(i=19968;i<40870;i++)document.write(String.fromCharCode(i));    
+</script>   
+
+显示现在时间的脚本    
+<script language=vbscript>document.write now</script>   
+
+显示最后修改时间的脚本    
+<script>document.write(document.lastModified)</script>    
+
+按下F12键,直接返回首页    
+<script>function look(){    
+if(event.keyCode==123){document.location.href=http://www.winliuxq.com/}    
+}    
+if(document.onkeydown==null)    
+{document.onkeydown=look}    
+</script>    
+
+端口检测    
+<img src="http://www.winliuxq/zza.jpg" onload="alert('端口可用')" onerror="alert('端口禁止')"...>   
+
+无法最小化的窗口    
+<body onblur='self.focus();'>   
+
+链接点外部css文件    
+<style>@import url("ie.css");</style>   
+
+内嵌式框架-网页中调用另外网页：    
+<object type="text/x-scriptlet" width="600"   height="1000" data="http://www.winliuxq.com/"></object>   
+
+刷新改变窗口大小    
+<OBJECT classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" onreadystatechange="if (this.readyState==4) this.Click();" VIEWASTEXT><PARAM name="Command" value="Maximize"></OBJECT>   
+
+JavaScript实现网页竖虚线    
+<script>hei=120;d1=2;d2=2;cou=Math.floor(hei/(d1+d2));    
+document.write('<table cellspacing=0 cellpadding=0 width=1 height='+hei+'>');    
+for(i=0;i<cou;i++){document.write('<tr><td height='+d2+'><tr><td height='+d1+' bgcolor=333333>')}</script></table>
+
+js翻页    
+
+<script>document.write("<a href="+location.href.replace(/\.html/g,"_2.html")+">2</a>");</script>
