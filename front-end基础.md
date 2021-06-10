@@ -47,13 +47,90 @@ computed：computed是计算属性，也就是依赖其它的属性计算所得�
 
 
 
+- computed用来监控自己定义的变量，该变量不在data里面声明，直接在computed里面定义，然后就可以在页面上进行双向数据绑定展示出结果或者用作其他处理；
+- computed比较适合对多个变量或者对象进行处理后返回一个结果值，也就是数多个变量中的某一个值发生了变化则我们监控的这个值也就会发生变化，举例：购物车里面的商品列表和总金额之间的关系，只要商品列表里面的商品数量发生变化，或减少或增多或删除商品，总金额都应该发生变化。这里的这个总金额使用computed属性来进行计算是最好的选择
+
+
+
 ## 4. this.$emit('ok')
 
 子组件 向父组件 传值
 
 
 
+## 5. mounted
+
+通常是为 metheds 函数提前定义（ 类似提前声明变量 进入页面内容全部渲染完成后自动引函数），即
+
+```js
+mounted() {
+  this.submit()
+},
+methods: {
+  submit() {
+    this.select.List = [];
+    for (var j = 0; j < this.select.label.length; j++) {
+      var Name = this.ToLabel(this.select.label[j])
+      this.select.List.push(Name);
+    }
+  }
+```
+
+
+
+## 6. watch
+
+watch的作用可以监控一个值的变换，并调用因为变化需要执行的方法。可以通过watch动态改变关联的状态,
+
+即监听, watch主要用于监控vue实例的变化，它监控的变量当然必须在data里面声明才可以，它可以监控一个变量，也可以是一个对象，
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+## 7. $t()
+
+$t是挂到了Vue.prototype上的一个方法，接受一个字符串作为参数
+
+```vue
+  <el-form-item :label="$t('fm.config.widget.model')" v-if="data.type!='grid'">
+        <el-input v-model="data.model"></el-input>
+  </el-form-item>
+```
+
+
+
+
+
+## 8. 生命周期函数
+
+created
+
+mounted
+
+
+
+<img src=".\img\lifecycle.png" style="zoom:50%;" />
+
+
+
+## 9. 绑定
+
+插值: {{}}
+
+v-model: 双向绑定
+
+v-bind: 绑定属性
+
+v-on:  @
+
+
+
+## 10. 路由
+
+声明式: 	\<route-link :to="">
+
+编程式:  route.push(...)
 
 
 
@@ -1442,6 +1519,42 @@ function submit3() {
 ```js
 console.log('e ->', e, '\n', ' value -> ', value, ' \n', ' row -> ', row, '\n', ' index -> ', index)
 ```
+
+
+
+## 16. 拖放元素
+
+在拖放的过程中会触发以下事件：
+
+- - 在拖动目标上触发事件
+
+     
+
+    (源元素)
+
+    :
+
+    - ondragstart - 用户开始拖动元素时触发
+    - ondrag - 元素正在拖动时触发
+    - ondragend - 用户完成元素拖动后触发
+
+- - 释放目标时触发的事件:
+    - ondragenter - 当被鼠标拖动的对象进入其容器范围内时触发此事件
+    - ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件
+    - ondragleave - 当被鼠标拖动的对象离开其容器范围内时触发此事件
+    - ondrop - 在一个拖动过程中，释放鼠标键时触发此事件
+
+
+
+## 17. event 对象
+
+|                         |                                                              |      |
+| ----------------------- | ------------------------------------------------------------ | ---- |
+| event.stopPropagation() | 不再派发事件。阻止捕获和冒泡阶段中当前事件的进一步传播,终止事件在传播过程的捕获、目标处理或起泡阶段进一步传播。调用该方法后，该节点上处理该事件的处理程序将被调用，事件不再被分派到其他节点 |      |
+| event.preventDefault(); | 告诉[user agent](https://developer.mozilla.org/zh-CN/docs/Glossary/User_agent)：如果此事件没有被显式处理，它默认的动作也不应该照常执行。此事件还是继续传播，除非碰到事件侦听器调用[`stopPropagation()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopPropagation) 或[`stopImmediatePropagation()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopImmediatePropagation)，才停止传播。 |      |
+|                         |                                                              |      |
+
+
 
 
 
