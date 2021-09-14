@@ -857,6 +857,15 @@ cnpm install echarts --save
 
 
 
+## 2. cnpm
+
+```js
+npm set registry https://registry.npm.taobao.org
+npm set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+```
+
+
+
 
 
 # html
