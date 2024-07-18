@@ -2290,7 +2290,7 @@ componentWillUnmount
 
 
 
-## location
+## 1. location
 
 
 
@@ -2307,11 +2307,291 @@ componentWillUnmount
 
 
 
+## 2. 配置示例
+
+```javascript
+
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+	gzip on;
+	gzip_comp_level 9;
+	gzip_min_length 10k;
+	gzip_proxied any;
+	gzip_vary on;
+	gzip_types
+    	application/atom+xml
+    	application/javascript
+    	application/json
+    	application/ld+json
+    	application/manifest+json
+    	application/rss+xml
+    	application/vnd.geo+json
+    	application/vnd.ms-fontobject
+    	application/x-font-ttf
+    	application/x-web-app-manifest+json
+    	application/xhtml+xml
+    	application/xml
+    	font/opentype
+    	image/bmp
+    	image/svg+xml
+    	image/x-icon
+    	text/cache-manifest
+    	text/css
+    	text/plain
+    	text/vcard
+    	text/vnd.rim.location.xloc
+    	text/vtt
+    	text/x-component
+    	text/x-cross-domain-policy;	
+
+
+	client_max_body_size 1000M;
+	server_tokens off;
+	
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+    server {
+        listen       8090 ssl;
+        server_name  xianmoer-frontend;
+		
+		ssl_certificate D:/ProgramData/nginx/nginx-1.24.0/conf/xianmoer.crt;
+        ssl_certificate_key D:/ProgramData/nginx/nginx-1.24.0/conf/xianmoer.key;
+		ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; 
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; 
+        ssl_prefer_server_ciphers on;
+	
+		server_tokens off;
+		proxy_hide_header Server;
+		add_header Content-Security-Policy "default-src 'self';
+                                 object-src 'self' ;
+                                 style-src 'self' 'unsafe-inline';
+                                 frame-src 'self' ;
+                                 base-uri 'self'; 
+                                 form-action 'self';
+                                 script-src 'self'  'unsafe-eval' 'sha256-s9RoBFqqRTKEz03aMkaEGLy7X3nJuyOZ8mzkjwCekYA=' ;
+								 connect-src 'self' https://api.iconify.design https://api.unisvg.com https://api.simplesvg.com;
+                                 img-src 'self' data:";
+		add_header X-Content-Type-Options "nosniff";
+		add_header Set-Cookie "SameSite=Lax; Secure; HttpOnly; Path=/";
+		add_header Referrer-Policy same-origin;
+        
+		root D:\xianmoer-assessment\front-end\20231121\dist;
+
+        location /basic-api {
+            proxy_pass http://127.0.0.1:9950/api;			
+        }
+
+        location /file/xianmoer {
+            proxy_set_header Host 127.0.0.1:9000;
+            proxy_pass http://127.0.0.1:9000/xianmoer;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+		
+		location ~ /\. {
+			deny all;
+		}
+		
+		location / {
+            try_files $uri $uri/ =404;
+        }
+    }
+}
+
+```
 
 
 
 
 
+# eslint
+
+## 1. eslint 为何推荐单引号,
+
+ESLint 是一个可配置的 JavaScript 代码检查工具，它可以帮助开发者保持代码一致性和质量。关于引号风格，ESLint 的默认推荐配置通常会推荐使用单引号。以下是几个原因和背景解释：
+
+### 1. 一致性和可读性
+
+使用单引号或双引号是代码风格的一部分。保持一致的引号风格可以提高代码的可读性和可维护性。
+
+### 2. 减少转义字符的使用
+
+在 JavaScript 中，当字符串中包含 HTML 属性或其他带双引号的字符串时，使用单引号可以减少转义字符的使用。例如：
+
+```
+javascript
+复制代码
+// 使用单引号，不需要转义双引号
+const htmlString = '<div class="container">Hello</div>';
+
+// 使用双引号，需要转义双引号
+const htmlString = "<div class=\"container\">Hello</div>";
+```
+
+### 3. 社区标准
+
+许多 JavaScript 社区和框架（如 AirBnB JavaScript Style Guide、StandardJS）都推荐使用单引号。采用社区标准可以让团队中的每个开发者更容易理解和遵循代码风格。
+
+### 4. JSON 和 JavaScript 区分
+
+JSON 格式要求使用双引号，而在 JavaScript 代码中使用单引号可以更容易地区分 JSON 数据和 JavaScript 代码。例如：
+
+```
+javascript
+复制代码
+// JSON
+const jsonString = '{"name": "John", "age": 30}';
+
+// JavaScript
+const jsString = '{"name": "John", "age": 30}';
+const message = 'This is a JavaScript string';
+```
+
+### 配置 ESLint 使用单引号
+
+在 ESLint 配置文件中，你可以通过 `quotes` 规则来指定引号风格。以下是一个示例配置：
+
+```
+json
+复制代码
+{
+  "rules": {
+    "quotes": ["error", "single"]
+  }
+}
+```
+
+这条规则表示：所有字符串应该使用单引号，如果不符合，将会产生一个错误。
+
+### 例外情况
+
+尽管 ESLint 推荐使用单引号，有时候仍然需要使用双引号。例如，当字符串中包含单引号时，使用双引号可以避免转义：
+
+```
+javascript
+复制代码
+const message = "It's a beautiful day"; // 使用双引号避免转义
+```
+
+在这种情况下，你可以根据实际需要覆盖默认规则。
+
+### 总结
+
+ESLint 推荐使用单引号的主要原因是为了代码的一致性、减少转义字符的使用、遵循社区标准以及区分 JSON 和 JavaScript 代码。这些推荐规则可以帮助开发团队保持统一的代码风格，提高代码的可读性和维护性。
 
 
 
