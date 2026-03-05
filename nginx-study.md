@@ -121,6 +121,9 @@ http {
 
 	client_max_body_size 1000M;
 	server_tokens off;
+	proxy_connect_timeout 600s; # 控制 Nginx 尝试与上游服务器 建立 TCP 连接的超时时间。
+    proxy_send_timeout 600s; # 控制 Nginx 向 upstream 服务器 发送请求数据的超时时间（从连接建立后开始计时）。
+    proxy_read_timeout 600s; # 控制 Nginx 等待上游服务器 返回响应数据的超时时间（从请求发送完成后开始计时）
 	
     server {
         listen       80;
@@ -309,21 +312,50 @@ Nginx
 
 # 1. 命令
 
-| windows 系统                           |      |      |
-| -------------------------------------- | ---- | ---- |
-| nginx.exe                              | 开启 |      |
-| nginx.exe -s stop    nginx.exe -s quit | 停止 |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
-|                                        |      |      |
+| windows 系统(cd 到 nginx 目录)         |          |      |
+| -------------------------------------- | -------- | ---- |
+| nginx.exe                              | 开启     |      |
+| nginx.exe -s stop    nginx.exe -s quit | 停止     |      |
+| nginx.exe -s reload                    | 重启     |      |
+| nginx.exe -v                           | 查看版本 |      |
+|                                        |          |      |
+|                                        |          |      |
+|                                        |          |      |
+|                                        |          |      |
+|                                        |          |      |
+|                                        |          |      |
+|                                        |          |      |
+|                                        |          |      |
+|                                        |          |      |
+
+
+
+# 2. windows 版nginx服务, winsw+ **.xml
+
+nginx-service.xml
+
+```xml
+<service>
+  <id>nginx-service</id>
+  <name>nginx-service</name>
+  <description>xianmoer Nginx Web Server</description>
+  <executable>D:\ProgramData\nginx\nginx-1.24.0\nginx.exe</executable>
+  <startarguments>-p "D:\ProgramData\nginx\nginx-1.24.0" -c "conf/nginx.conf"</startarguments>
+  <stopexecutable>D:\ProgramData\nginx\nginx-1.24.0\nginx.exe</stopexecutable>
+  <stoparguments>-p "D:\ProgramData\nginx\nginx-1.24.0" -s quit</stoparguments>
+  <startmode>Automatic</startmode>
+  <logmode>roll</logmode>
+</service>
+```
+
+
+
+```bash
+nginx-service.exe install
+nginx-service.exe start
+-- nginx-service.exe stop
+-- nginx-service.exe uninstall
+```
 
 
 
